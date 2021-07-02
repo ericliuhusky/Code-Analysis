@@ -1,0 +1,66 @@
+[<abstract>ReactiveCompatible
+| rx: Reactive<Self>
+]
+
+[Reactive<Base>
+| base: Base
+| subscript<Property>(dynamicMember keyPath:) -> Binder<Property>
+]
+
+[Reactive<Base: UIControl>
+| controlEvent(_ controlEvents: UIControl.Event) -> ControlEvent<()>
+]
+
+[Reactive<Base: UIButton>
+| tap: ControlEvent<Void>
+]
+
+[Reactive<Base: UIGestureRecognizer>
+| event: ControlEvent<Base>
+]
+
+[ControlEvent<PropertyType>
+| subscribe(_ observer: ObserverType)
+]
+
+[Binder<Value>
+| on(_ event: Event<Value>)
+]
+
+[<abstract>ObserverType
+| onNext(_ element: Element)
+]
+
+[<abstract>ObservableType
+| subscribe(_ on: (Event<Element>) -> Void) -> Disposable
+]
+
+
+[NSObject] --:> [ReactiveCompatible]
+[ReactiveCompatible] -> [Reactive<Base>]
+
+[Reactive<Base>] +- [Reactive<Base: UIControl>]
+[Reactive<Base>] +- [Reactive<Base: UIButton>]
+[Reactive<Base>] +- [Reactive<Base: UIGestureRecognizer>]
+
+[Reactive<Base: UIControl>] --> [ControlTarget]
+[Reactive<Base: UIControl>] -> [ControlEvent<PropertyType>]
+[Reactive<Base: UIButton>] -> [ControlEvent<PropertyType>]
+[Reactive<Base: UIGestureRecognizer>] -> [ControlEvent<PropertyType>]
+
+[Reactive<Base>] --> [Binder<Value>]
+[Binder<Value>] --:> [ObserverType]
+
+[ControlEvent<PropertyType>] --:> [ObservableType]
+[ObservableType] --> [AnonymousObserver]
+
+
+
+
+
+
+
+
+
+
+

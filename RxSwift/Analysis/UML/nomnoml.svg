@@ -1,0 +1,140 @@
+<svg version="1.1" baseProfile="full" width="1406" height="699" viewbox="0 0 1406 699" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:bold  12pt Helvetica, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
+  <desc >[&lt;abstract&gt;ReactiveCompatible
+| rx: Reactive&lt;Self&gt;
+]
+
+[Reactive&lt;Base&gt;
+| base: Base
+| subscript&lt;Property&gt;(dynamicMember keyPath:) -&gt; Binder&lt;Property&gt;
+]
+
+[Reactive&lt;Base: UIControl&gt;
+| controlEvent(_ controlEvents: UIControl.Event) -&gt; ControlEvent&lt;()&gt;
+]
+
+[Reactive&lt;Base: UIButton&gt;
+| tap: ControlEvent&lt;Void&gt;
+]
+
+[Reactive&lt;Base: UIGestureRecognizer&gt;
+| event: ControlEvent&lt;Base&gt;
+]
+
+[ControlEvent&lt;PropertyType&gt;
+| subscribe(_ observer: ObserverType)
+]
+
+[Binder&lt;Value&gt;
+| on(_ event: Event&lt;Value&gt;)
+]
+
+[&lt;abstract&gt;ObserverType
+| onNext(_ element: Element)
+]
+
+[&lt;abstract&gt;ObservableType
+| subscribe(_ on: (Event&lt;Element&gt;) -&gt; Void) -&gt; Disposable
+]
+
+
+[NSObject] --:&gt; [ReactiveCompatible]
+[ReactiveCompatible] -&gt; [Reactive&lt;Base&gt;]
+
+[Reactive&lt;Base&gt;] +- [Reactive&lt;Base: UIControl&gt;]
+[Reactive&lt;Base&gt;] +- [Reactive&lt;Base: UIButton&gt;]
+[Reactive&lt;Base&gt;] +- [Reactive&lt;Base: UIGestureRecognizer&gt;]
+
+[Reactive&lt;Base: UIControl&gt;] --&gt; [ControlTarget]
+[Reactive&lt;Base: UIControl&gt;] -&gt; [ControlEvent&lt;PropertyType&gt;]
+[Reactive&lt;Base: UIButton&gt;] -&gt; [ControlEvent&lt;PropertyType&gt;]
+[Reactive&lt;Base: UIGestureRecognizer&gt;] -&gt; [ControlEvent&lt;PropertyType&gt;]
+
+[Reactive&lt;Base&gt;] --&gt; [Binder&lt;Value&gt;]
+[Binder&lt;Value&gt;] --:&gt; [ObserverType]
+
+[ControlEvent&lt;PropertyType&gt;] --:&gt; [ObservableType]
+[ObservableType] --&gt; [AnonymousObserver]
+
+
+
+
+
+
+
+
+
+
+
+</desc>
+  <rect x="0" y="0" height="699" width="1406" style="stroke:none; fill:transparent;"></rect>
+  <path d="M821.3 59.5 L821.3 79.5 L821.3 86.2 L821.3 86.2 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;stroke-width:3;"></path>
+  <path d="M815.9 86.2 L821.3 86.2 L826.6 86.2 L821.3 99.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M821.3 161.5 L821.3 181.5 L821.3 194.8 L821.3 194.8 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M815.9 188.2 L821.3 194.8 L826.6 188.2 L821.3 201.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M550.7 280.9 L275 314.5 L275 334.5 L275 334.5 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M560.6 285.1 L550.7 280.9 L559.3 274.5 L569.3 278.7 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M698 302 L669.5 314.5 L669.5 334.5 L669.5 334.5 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M708.7 303.1 L698 302 L704.4 293.4 L715.1 294.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M944.5 302 L973 314.5 L973 334.5 L973 334.5 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M938.1 293.4 L944.5 302 L933.8 303.1 L927.4 294.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M262.8 396.5 L255 416.5 L255 445.3 L255 445.3 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;stroke-width:3;"></path>
+  <path d="M249.7 438.7 L255 445.3 L260.3 438.7 L255 452 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M382.7 396.5 L452.3 416.5 L531 435 L531 435 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M523.2 438.6 L531 435 L525.7 428.3 L537.4 436.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M669.5 396.5 L669.5 416.5 L669.5 429.8 L669.5 429.8 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M664.2 423.2 L669.5 429.8 L674.8 423.2 L669.5 436.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M973 396.5 L973 416.5 L816.1 442.9 L816.1 442.9 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M821.8 436.5 L816.1 442.9 L823.5 447 L809.5 444 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M1073.3 285.3 L1271 314.5 L1271 327.8 L1271 327.8 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;stroke-width:3;"></path>
+  <path d="M1265.7 321.2 L1271 327.8 L1276.3 321.2 L1271 334.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M1271 396.5 L1271 416.5 L1271 423.2 L1271 423.2 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;stroke-width:3;"></path>
+  <path d="M1265.7 423.2 L1271 423.2 L1276.3 423.2 L1271 436.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M669.5 498.5 L669.5 518.5 L669.5 525.2 L669.5 525.2 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;stroke-width:3;"></path>
+  <path d="M664.2 525.2 L669.5 525.2 L674.8 525.2 L669.5 538.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M669.5 600.5 L669.5 620.5 L669.5 633.8 L669.5 633.8 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;stroke-width:3;"></path>
+  <path d="M664.2 627.2 L669.5 633.8 L674.8 627.2 L669.5 640.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:3;"></path>
+  <rect x="569.5" y="201.5" height="93" width="504" data-name="Reactive&lt;Base&gt;" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
+  <path d="M569.5 232.5 L1073.5 232.5" data-name="Reactive&lt;Base&gt;" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M569.5 263.5 L1073.5 263.5" data-name="Reactive&lt;Base&gt;" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <text x="821.5" y="223" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="Reactive&lt;Base&gt;">Reactive&lt;Base&gt;</text>
+  <text x="577.5" y="254" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="Reactive&lt;Base&gt;">base: Base</text>
+  <text x="577.5" y="285" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="Reactive&lt;Base&gt;">subscript&lt;Property&gt;(dynamicMember keyPath:) -&gt; Binder&lt;Property&gt;</text>
+  <rect x="736.5" y="99.5" height="62" width="169" data-name="ReactiveCompatible" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
+  <path d="M736.5 130.5 L905.5 130.5" data-name="ReactiveCompatible" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <text x="821" y="121" style="fill: #33322E;font:normal italic 12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="ReactiveCompatible">ReactiveCompatible</text>
+  <text x="744.5" y="152" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="ReactiveCompatible">rx: Reactive&lt;Self&gt;</text>
+  <rect x="28.5" y="334.5" height="62" width="493" data-name="Reactive&lt;Base: UIControl&gt;" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
+  <path d="M28.5 365.5 L521.5 365.5" data-name="Reactive&lt;Base: UIControl&gt;" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <text x="275" y="356" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="Reactive&lt;Base: UIControl&gt;">Reactive&lt;Base: UIControl&gt;</text>
+  <text x="36.5" y="387" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="Reactive&lt;Base: UIControl&gt;">controlEvent(_ controlEvents: UIControl.Event) -&gt; ControlEvent&lt;()&gt;</text>
+  <rect x="561.5" y="334.5" height="62" width="216" data-name="Reactive&lt;Base: UIButton&gt;" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
+  <path d="M561.5 365.5 L777.5 365.5" data-name="Reactive&lt;Base: UIButton&gt;" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <text x="669.5" y="356" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="Reactive&lt;Base: UIButton&gt;">Reactive&lt;Base: UIButton&gt;</text>
+  <text x="569.5" y="387" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="Reactive&lt;Base: UIButton&gt;">tap: ControlEvent&lt;Void&gt;</text>
+  <rect x="817.5" y="334.5" height="62" width="311" data-name="Reactive&lt;Base: UIGestureRecognizer&gt;" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
+  <path d="M817.5 365.5 L1128.5 365.5" data-name="Reactive&lt;Base: UIGestureRecognizer&gt;" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <text x="973" y="356" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="Reactive&lt;Base: UIGestureRecognizer&gt;">Reactive&lt;Base: UIGestureRecognizer&gt;</text>
+  <text x="825.5" y="387" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="Reactive&lt;Base: UIGestureRecognizer&gt;">event: ControlEvent&lt;Base&gt;</text>
+  <rect x="529.5" y="436.5" height="62" width="280" data-name="ControlEvent&lt;PropertyType&gt;" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
+  <path d="M529.5 467.5 L809.5 467.5" data-name="ControlEvent&lt;PropertyType&gt;" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <text x="669.5" y="458" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="ControlEvent&lt;PropertyType&gt;">ControlEvent&lt;PropertyType&gt;</text>
+  <text x="537.5" y="489" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="ControlEvent&lt;PropertyType&gt;">subscribe(_ observer: ObserverType)</text>
+  <rect x="1168.5" y="334.5" height="62" width="205" data-name="Binder&lt;Value&gt;" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
+  <path d="M1168.5 365.5 L1373.5 365.5" data-name="Binder&lt;Value&gt;" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <text x="1271" y="356" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="Binder&lt;Value&gt;">Binder&lt;Value&gt;</text>
+  <text x="1176.5" y="387" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="Binder&lt;Value&gt;">on(_ event: Event&lt;Value&gt;)</text>
+  <rect x="1163.5" y="436.5" height="62" width="215" data-name="ObserverType" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
+  <path d="M1163.5 467.5 L1378.5 467.5" data-name="ObserverType" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <text x="1271" y="458" style="fill: #33322E;font:normal italic 12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="ObserverType">ObserverType</text>
+  <text x="1171.5" y="489" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="ObserverType">onNext(_ element: Element)</text>
+  <rect x="458.5" y="538.5" height="62" width="422" data-name="ObservableType" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
+  <path d="M458.5 569.5 L880.5 569.5" data-name="ObservableType" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <text x="669.5" y="560" style="fill: #33322E;font:normal italic 12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="ObservableType">ObservableType</text>
+  <text x="466.5" y="591" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="ObservableType">subscribe(_ on: (Event&lt;Element&gt;) -&gt; Void) -&gt; Disposable</text>
+  <rect x="777.5" y="28.5" height="31" width="88" data-name="NSObject" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
+  <text x="821.5" y="50" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="NSObject">NSObject</text>
+  <rect x="194.5" y="452.5" height="31" width="121" data-name="ControlTarget" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
+  <text x="255" y="474" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="ControlTarget">ControlTarget</text>
+  <rect x="580.5" y="640.5" height="31" width="179" data-name="AnonymousObserver" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
+  <text x="670" y="662" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="AnonymousObserver">AnonymousObserver</text>
+</svg>
