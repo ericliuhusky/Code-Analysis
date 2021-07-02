@@ -1,0 +1,106 @@
+[ConstraintView
+| snp: ConstraintViewDSL
+]
+
+[ConstraintViewDSL
+| makeConstraints(: (: ConstraintMaker) -> Void)
+]
+
+[ConstraintAttributesDSL
+| left: ConstraintItemConstraintItem
+]
+
+[ConstraintMaker
+| left: ConstraintMakerExtendable;
+descriptions: \[ConstraintDescription\]
+
+| makeConstraints(item: LayoutConstraintItem, closure: (: ConstraintMaker) -> Void);
+prepareConstraints(item: LayoutConstraintItem, closure: (_: ConstraintMaker) -> Void) -> \[Constraint\];
+makeExtendableWithAttributes(: ConstraintAttributes) -> ConstraintMakerExtendable
+]
+
+[ConstraintMakerExtendable
+| right: ConstraintMakerExtendable
+]
+
+[ConstraintMakerRelatable
+| description: ConstraintDescription
+
+| equalTo(_: ConstraintRelatableTarget) -> ConstraintMakerEditable;
+relatedTo(: ConstraintRelatableTarget, relation: ConstraintRelation) -> ConstraintMakerEditable
+]
+
+[ConstraintMakerEditable
+| offset(: ConstraintOffsetTarget) -> ConstraintMakerEditable
+]
+
+[ConstraintDescription
+| item: LayoutConstraintItem;
+attributes: ConstraintAttributes;
+relation: ConstraintRelation?;
+related: ConstraintItem?;
+multiplier: ConstraintMultiplierTarget = 1.0;
+constant: ConstraintConstantTarget = 0.0;
+constraint: Constraint?
+]
+
+[Constraint
+| from: ConstraintItem;
+to: ConstraintItem;
+relation: ConstraintRelation;
+multiplier: ConstraintMultiplierTarget;
+constant: ConstraintConstantTarget;
+layoutConstraints: \[LayoutConstraint\]
+
+| activateIfNeeded(updatingExisting: Bool = false)
+]
+
+[ConstraintItem
+| target: AnyObject?;
+attributes: ConstraintAttributes;
+layoutConstraintItem: LayoutConstraintItem?
+]
+
+[LayoutConstraintItem
+| superview: ConstraintView?
+| prepare()
+]
+
+
+
+[ConstraintViewDSL] --:> [ConstraintAttributesDSL]
+[ConstraintMakerExtendable] -:> [ConstraintMakerRelatable]
+
+[UIView] <-= [ConstraintView]
+[NSView] <-= [ConstraintView] 
+[ConstraintView] -> [ConstraintViewDSL]
+[ConstraintViewDSL] --> [ConstraintMaker]
+[ConstraintMaker] -> [ConstraintMakerExtendable]
+[ConstraintMakerRelatable] --> [ConstraintMakerEditable]
+[ConstraintMaker] +- [ConstraintDescription]
+[ConstraintDescription] -> [Constraint]
+[Constraint] -> [ConstraintItem]
+[Constraint] +- [LayoutConstraint]
+[ConstraintItem] -> [LayoutConstraintItem]
+[LayoutConstraintItem] -:> [AnyObject]
+[LayoutConstraint] -:>[NSLayoutConstraint]
+
+[ConstraintMakerRelatable] --> [ConstraintRelatableTarget]
+[ConstraintRelatableTarget] <:-- [Int]
+[ConstraintRelatableTarget] <:-- [Double]
+[ConstraintRelatableTarget] <:-- [CGFloat]
+[ConstraintRelatableTarget] <:-- [ConstraintItem]
+
+[ConstraintView] --:> [ConstraintRelatableTarget]
+
+
+
+
+
+
+
+
+
+
+
+

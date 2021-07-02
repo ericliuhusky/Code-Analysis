@@ -1,0 +1,241 @@
+<svg version="1.1" baseProfile="full" width="1598.75" height="1307" viewbox="0 0 1598.75 1307" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:bold  12pt Helvetica, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
+  <desc >[ConstraintView
+| snp: ConstraintViewDSL
+]
+
+[ConstraintViewDSL
+| makeConstraints(: (: ConstraintMaker) -&gt; Void)
+]
+
+[ConstraintAttributesDSL
+| left: ConstraintItemConstraintItem
+]
+
+[ConstraintMaker
+| left: ConstraintMakerExtendable;
+descriptions: \[ConstraintDescription\]
+
+| makeConstraints(item: LayoutConstraintItem, closure: (: ConstraintMaker) -&gt; Void);
+prepareConstraints(item: LayoutConstraintItem, closure: (_: ConstraintMaker) -&gt; Void) -&gt; \[Constraint\];
+makeExtendableWithAttributes(: ConstraintAttributes) -&gt; ConstraintMakerExtendable
+]
+
+[ConstraintMakerExtendable
+| right: ConstraintMakerExtendable
+]
+
+[ConstraintMakerRelatable
+| description: ConstraintDescription
+
+| equalTo(_: ConstraintRelatableTarget) -&gt; ConstraintMakerEditable;
+relatedTo(: ConstraintRelatableTarget, relation: ConstraintRelation) -&gt; ConstraintMakerEditable
+]
+
+[ConstraintMakerEditable
+| offset(: ConstraintOffsetTarget) -&gt; ConstraintMakerEditable
+]
+
+[ConstraintDescription
+| item: LayoutConstraintItem;
+attributes: ConstraintAttributes;
+relation: ConstraintRelation?;
+related: ConstraintItem?;
+multiplier: ConstraintMultiplierTarget = 1.0;
+constant: ConstraintConstantTarget = 0.0;
+constraint: Constraint?
+]
+
+[Constraint
+| from: ConstraintItem;
+to: ConstraintItem;
+relation: ConstraintRelation;
+multiplier: ConstraintMultiplierTarget;
+constant: ConstraintConstantTarget;
+layoutConstraints: \[LayoutConstraint\]
+
+| activateIfNeeded(updatingExisting: Bool = false)
+]
+
+[ConstraintItem
+| target: AnyObject?;
+attributes: ConstraintAttributes;
+layoutConstraintItem: LayoutConstraintItem?
+]
+
+[LayoutConstraintItem
+| superview: ConstraintView?
+| prepare()
+]
+
+
+
+[ConstraintViewDSL] --:&gt; [ConstraintAttributesDSL]
+[ConstraintMakerExtendable] -:&gt; [ConstraintMakerRelatable]
+
+[UIView] &lt;-= [ConstraintView]
+[NSView] &lt;-= [ConstraintView] 
+[ConstraintView] -&gt; [ConstraintViewDSL]
+[ConstraintViewDSL] --&gt; [ConstraintMaker]
+[ConstraintMaker] -&gt; [ConstraintMakerExtendable]
+[ConstraintMakerRelatable] --&gt; [ConstraintMakerEditable]
+[ConstraintMaker] +- [ConstraintDescription]
+[ConstraintDescription] -&gt; [Constraint]
+[Constraint] -&gt; [ConstraintItem]
+[Constraint] +- [LayoutConstraint]
+[ConstraintItem] -&gt; [LayoutConstraintItem]
+[LayoutConstraintItem] -:&gt; [AnyObject]
+[LayoutConstraint] -:&gt;[NSLayoutConstraint]
+
+[ConstraintMakerRelatable] --&gt; [ConstraintRelatableTarget]
+[ConstraintRelatableTarget] &lt;:-- [Int]
+[ConstraintRelatableTarget] &lt;:-- [Double]
+[ConstraintRelatableTarget] &lt;:-- [CGFloat]
+[ConstraintRelatableTarget] &lt;:-- [ConstraintItem]
+
+[ConstraintView] --:&gt; [ConstraintRelatableTarget]
+
+
+
+
+
+
+
+
+
+
+
+
+</desc>
+  <rect x="0" y="0" height="1307" width="1598.75" style="stroke:none; fill:transparent;"></rect>
+  <path d="M987 255.3 L1201.5 283.5 L1201.5 328.2 L1201.5 328.2 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;stroke-width:3;"></path>
+  <path d="M1196.2 328.2 L1201.5 328.2 L1206.8 328.2 L1201.5 341.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M874.3 543.5 L874.3 563.5 L874.3 592.2 L874.3 592.2 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M868.9 592.2 L874.3 592.2 L879.6 592.2 L874.3 605.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></path>
+  <text x="894.5" y="91.5" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;">=</text>
+  <path d="M864.8 66.2 L864.8 79.5 L886.5 99.5 L886.5 99.5 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M870.1 72.8 L864.8 66.2 L859.4 72.8 L864.8 59.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:3;"></path>
+  <text x="936.6" y="91.5" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;">=</text>
+  <path d="M975.8 66.2 L975.8 79.5 L954 99.5 L954 99.5 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M981.1 72.8 L975.8 66.2 L970.4 72.8 L975.8 59.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M855.4 161.5 L813.5 181.5 L813.5 194.8 L813.5 194.8 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M808.2 188.2 L813.5 194.8 L818.8 188.2 L813.5 201.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M652 263.5 L547.8 283.5 L547.8 296.8 L547.8 296.8 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;stroke-width:3;"></path>
+  <path d="M542.4 290.2 L547.8 296.8 L553.1 290.2 L547.8 303.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M800.9 441.5 L874.3 461.5 L874.3 474.8 L874.3 474.8 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M868.9 468.2 L874.3 474.8 L879.6 468.2 L874.3 481.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M845 713.5 L822.3 755.5 L822.3 821.8 L822.3 821.8 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;stroke-width:3;"></path>
+  <path d="M816.9 815.2 L822.3 821.8 L827.6 815.2 L822.3 828.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M365.8 448.7 L335.3 461.5 L335.3 512.5 L335.3 512.5 L335.3 563.5 L335.3 563.5 L335.3 583.5 L335.3 583.5 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M376.5 450 L365.8 448.7 L372.3 440.2 L383 441.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M335.3 735.5 L335.3 755.5 L335.3 768.8 L335.3 768.8 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M329.9 762.2 L335.3 768.8 L340.6 762.2 L335.3 775.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M205.8 943.5 L175 963.5 L179.1 977.1 L179.1 977.1 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M172.1 972.3 L179.1 977.1 L182.3 969.2 L181.1 983.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M531.8 912.5 L720.8 963.5 L720.8 1014 L720.8 1014 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M524.2 904.9 L531.8 912.5 L521.4 915.2 L513.8 907.7 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M195 1075.5 L195 1095.5 L195 1108.8 L195 1108.8 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M189.7 1102.2 L195 1108.8 L200.3 1102.2 L195 1115.5 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M195 1208.5 L195 1228.5 L195 1235.2 L195 1235.2 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M189.7 1235.2 L195 1235.2 L200.3 1235.2 L195 1248.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M720.8 1045 L720.8 1095.5 L720.8 1133.2 L720.8 1133.2 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M715.4 1133.2 L720.8 1133.2 L726.1 1133.2 L720.8 1146.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M976.6 713.5 L1056.3 755.5 L1318.4 841.9 L1318.4 841.9 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;stroke-width:3;"></path>
+  <path d="M1310.4 844.9 L1318.4 841.9 L1313.7 834.8 L1324.7 844 Z" style="stroke:#33322E;fill:#33322E;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M1281.3 877.6 L852.8 963.5 L852.8 1014 L852.8 1014 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;stroke-width:3;"></path>
+  <path d="M1282.4 882.8 L1281.3 877.6 L1280.3 872.4 L1294.4 875 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M1384.1 887.2 L1418.3 963.5 L1418.3 1014 L1418.3 1014 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;stroke-width:3;"></path>
+  <path d="M1389 885 L1384.1 887.2 L1379.3 889.3 L1378.7 875 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M1406.9 882.3 L1532.3 963.5 L1532.3 1014 L1532.3 1014 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;stroke-width:3;"></path>
+  <path d="M1409.8 877.8 L1406.9 882.3 L1404 886.7 L1395.7 875 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M1251 875 L560.5 963.5 L361.5 999.4 L361.5 999.4 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;stroke-width:3;"></path>
+  <path d="M1251.7 880.3 L1251 875 L1250.3 869.7 L1264.3 873.3 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M1014.8 140.7 L1391.8 181.5 L1391.8 232.5 L1391.8 232.5 L1391.8 283.5 L1391.8 283.5 L1391.8 372.5 L1391.8 372.5 L1391.8 461.5 L1391.8 461.5 L1391.8 512.5 L1391.8 512.5 L1391.8 563.5 L1391.8 563.5 L1391.8 659.5 L1391.8 659.5 L1391.8 755.5 L1391.8 755.5 L1377.2 830.9 L1377.2 830.9 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;stroke-width:3;"></path>
+  <path d="M1372 829.9 L1377.2 830.9 L1382.5 831.9 L1374.7 844 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></path>
+  <rect x="183.5" y="303.5" height="138" width="729" data-name="ConstraintMaker" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
+  <path d="M183.5 334.5 L912.5 334.5" data-name="ConstraintMaker" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M183.5 380.5 L912.5 380.5" data-name="ConstraintMaker" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <text x="548" y="325" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="ConstraintMaker">ConstraintMaker</text>
+  <text x="191.5" y="356" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="ConstraintMaker">left: ConstraintMakerExtendable</text>
+  <text x="191.5" y="371" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="ConstraintMaker">descriptions: [ConstraintDescription]</text>
+  <text x="191.5" y="402" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="ConstraintMaker">makeConstraints(item: LayoutConstraintItem, closure: (: ConstraintMaker) -&gt; Void)</text>
+  <text x="191.5" y="417" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="ConstraintMaker">prepareConstraints(item: LayoutConstraintItem, closure: (_: ConstraintMaker) -&gt; Void) -&gt; [Constraint]</text>
+  <text x="191.5" y="432" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="ConstraintMaker">makeExtendableWithAttributes(: ConstraintAttributes) -&gt; ConstraintMakerExtendable</text>
+  <rect x="530.5" y="605.5" height="108" width="687" data-name="ConstraintMakerRelatable" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
+  <path d="M530.5 636.5 L1217.5 636.5" data-name="ConstraintMakerRelatable" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M530.5 667.5 L1217.5 667.5" data-name="ConstraintMakerRelatable" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <text x="874" y="627" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="ConstraintMakerRelatable">ConstraintMakerRelatable</text>
+  <text x="538.5" y="658" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="ConstraintMakerRelatable">description: ConstraintDescription</text>
+  <text x="538.5" y="689" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="ConstraintMakerRelatable">equalTo(_: ConstraintRelatableTarget) -&gt; ConstraintMakerEditable</text>
+  <text x="538.5" y="704" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="ConstraintMakerRelatable">relatedTo(: ConstraintRelatableTarget, relation: ConstraintRelation) -&gt; ConstraintMakerEditable</text>
+  <rect x="156.5" y="775.5" height="168" width="357" data-name="Constraint" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
+  <path d="M156.5 806.5 L513.5 806.5" data-name="Constraint" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M156.5 912.5 L513.5 912.5" data-name="Constraint" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <text x="335" y="797" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="Constraint">Constraint</text>
+  <text x="164.5" y="828" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="Constraint">from: ConstraintItem</text>
+  <text x="164.5" y="843" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="Constraint">to: ConstraintItem</text>
+  <text x="164.5" y="858" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="Constraint">relation: ConstraintRelation</text>
+  <text x="164.5" y="873" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="Constraint">multiplier: ConstraintMultiplierTarget</text>
+  <text x="164.5" y="888" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="Constraint">constant: ConstraintConstantTarget</text>
+  <text x="164.5" y="903" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="Constraint">layoutConstraints: [LayoutConstraint]</text>
+  <text x="164.5" y="934" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="Constraint">activateIfNeeded(updatingExisting: Bool = false)</text>
+  <rect x="88.5" y="1115.5" height="93" width="213" data-name="LayoutConstraintItem" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
+  <path d="M88.5 1146.5 L301.5 1146.5" data-name="LayoutConstraintItem" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <path d="M88.5 1177.5 L301.5 1177.5" data-name="LayoutConstraintItem" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <text x="195" y="1137" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="LayoutConstraintItem">LayoutConstraintItem</text>
+  <text x="96.5" y="1168" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="LayoutConstraintItem">superview: ConstraintView?</text>
+  <text x="96.5" y="1199" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="LayoutConstraintItem">prepare()</text>
+  <rect x="825.5" y="99.5" height="62" width="189" data-name="ConstraintView" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
+  <path d="M825.5 130.5 L1014.5 130.5" data-name="ConstraintView" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <text x="920" y="121" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="ConstraintView">ConstraintView</text>
+  <text x="833.5" y="152" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="ConstraintView">snp: ConstraintViewDSL</text>
+  <rect x="640.5" y="201.5" height="62" width="347" data-name="ConstraintViewDSL" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
+  <path d="M640.5 232.5 L987.5 232.5" data-name="ConstraintViewDSL" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <text x="814" y="223" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="ConstraintViewDSL">ConstraintViewDSL</text>
+  <text x="648.5" y="254" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="ConstraintViewDSL">makeConstraints(: (: ConstraintMaker) -&gt; Void)</text>
+  <rect x="1074.5" y="341.5" height="62" width="254" data-name="ConstraintAttributesDSL" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
+  <path d="M1074.5 372.5 L1328.5 372.5" data-name="ConstraintAttributesDSL" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <text x="1201.5" y="363" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="ConstraintAttributesDSL">ConstraintAttributesDSL</text>
+  <text x="1082.5" y="394" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="ConstraintAttributesDSL">left: ConstraintItemConstraintItem</text>
+  <rect x="747.5" y="481.5" height="62" width="253" data-name="ConstraintMakerExtendable" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
+  <path d="M747.5 512.5 L1000.5 512.5" data-name="ConstraintMakerExtendable" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <text x="874" y="503" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="ConstraintMakerExtendable">ConstraintMakerExtendable</text>
+  <text x="755.5" y="534" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="ConstraintMakerExtendable">right: ConstraintMakerExtendable</text>
+  <rect x="605.5" y="828.5" height="62" width="433" data-name="ConstraintMakerEditable" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
+  <path d="M605.5 859.5 L1038.5 859.5" data-name="ConstraintMakerEditable" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <text x="822" y="850" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="ConstraintMakerEditable">ConstraintMakerEditable</text>
+  <text x="613.5" y="881" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="ConstraintMakerEditable">offset(: ConstraintOffsetTarget) -&gt; ConstraintMakerEditable</text>
+  <rect x="179.5" y="583.5" height="152" width="311" data-name="ConstraintDescription" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
+  <path d="M179.5 614.5 L490.5 614.5" data-name="ConstraintDescription" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <text x="335" y="605" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="ConstraintDescription">ConstraintDescription</text>
+  <text x="187.5" y="636" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="ConstraintDescription">item: LayoutConstraintItem</text>
+  <text x="187.5" y="651" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="ConstraintDescription">attributes: ConstraintAttributes</text>
+  <text x="187.5" y="666" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="ConstraintDescription">relation: ConstraintRelation?</text>
+  <text x="187.5" y="681" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="ConstraintDescription">related: ConstraintItem?</text>
+  <text x="187.5" y="696" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="ConstraintDescription">multiplier: ConstraintMultiplierTarget = 1.0</text>
+  <text x="187.5" y="711" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="ConstraintDescription">constant: ConstraintConstantTarget = 0.0</text>
+  <text x="187.5" y="726" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="ConstraintDescription">constraint: Constraint?</text>
+  <rect x="28.5" y="983.5" height="92" width="333" data-name="ConstraintItem" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
+  <path d="M28.5 1014.5 L361.5 1014.5" data-name="ConstraintItem" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:3;"></path>
+  <text x="195" y="1005" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="ConstraintItem">ConstraintItem</text>
+  <text x="36.5" y="1036" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="ConstraintItem">target: AnyObject?</text>
+  <text x="36.5" y="1051" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="ConstraintItem">attributes: ConstraintAttributes</text>
+  <text x="36.5" y="1066" style="fill: #33322E;font:normal  12pt Helvetica, Helvetica, sans-serif;" data-name="ConstraintItem">layoutConstraintItem: LayoutConstraintItem?</text>
+  <rect x="830.5" y="28.5" height="31" width="68" data-name="UIView" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
+  <text x="864.5" y="50" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="UIView">UIView</text>
+  <rect x="938.5" y="28.5" height="31" width="74" data-name="NSView" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
+  <text x="975.5" y="50" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="NSView">NSView</text>
+  <rect x="646.5" y="1014.5" height="31" width="148" data-name="LayoutConstraint" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
+  <text x="720.5" y="1036" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="LayoutConstraint">LayoutConstraint</text>
+  <rect x="147.5" y="1248.5" height="31" width="96" data-name="AnyObject" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
+  <text x="195.5" y="1270" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="AnyObject">AnyObject</text>
+  <rect x="635.5" y="1146.5" height="31" width="171" data-name="NSLayoutConstraint" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
+  <text x="721" y="1168" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="NSLayoutConstraint">NSLayoutConstraint</text>
+  <rect x="1264.5" y="844.5" height="31" width="215" data-name="ConstraintRelatableTarget" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
+  <text x="1372" y="866" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="ConstraintRelatableTarget">ConstraintRelatableTarget</text>
+  <rect x="834.5" y="1014.5" height="31" width="36" data-name="Int" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
+  <text x="852.5" y="1036" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="Int">Int</text>
+  <rect x="1383.5" y="1014.5" height="31" width="70" data-name="Double" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
+  <text x="1418.5" y="1036" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="Double">Double</text>
+  <rect x="1493.5" y="1014.5" height="31" width="78" data-name="CGFloat" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:3;"></rect>
+  <text x="1532.5" y="1036" style="fill: #33322E;font:bold  12pt Helvetica, Helvetica, sans-serif;text-anchor: middle;" data-name="CGFloat">CGFloat</text>
+</svg>
